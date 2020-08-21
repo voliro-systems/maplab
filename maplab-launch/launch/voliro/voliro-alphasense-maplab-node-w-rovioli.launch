@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 
 <launch>
-  <node pkg="rosbag" type="play" name="rosbag" args="/home/mfehr/Desktop/alphasense_calibration/voliro_alphasense_2020-07-24-18-46-22_0.bag -q -d 3 -r 1"/>
-  <!-- <node pkg="rosbag" type="play" name="rosbag" args="/home/mfehr/Desktop/alphasense_calibration/voliro_alphasense_2020-07-24-18-47-24_0.bag -q -d 3 -r 1"/>
-  <node pkg="rosbag" type="play" name="rosbag" args="/home/mfehr/Desktop/alphasense_calibration/voliro_alphasense_2020-07-24-18-48-52_0.bag -q -d 3 -r 1"/> -->
+	<arg name="rosbag_folder" default="/home/mfehr/Desktop/alphasense_calibration/flight_1/"/>
+	<node name="multibag_player_voliro" pkg="maplab_launch" type="play_multibag.sh" args="$(arg rosbag_folder) -d 2 -r 1.0" output="screen" />
 
 	<node pkg="rviz" type="rviz" name="maplab_rviz" args="-d $(find maplab_node)/share/maplab.rviz -f map"/>
 
